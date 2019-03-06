@@ -20,13 +20,14 @@ namespace Encapsulation_Exercises___Part_2
             Console.WriteLine("Enter length: ");
             int length = int.Parse(Console.ReadLine());
 
-            Console.WriteLine(surfaceArea(width, height, length));
+            Box b1 = new Box(width, height, length);
+            Console.WriteLine(b1.SurfaceArea());
         }
 
     }
 
     //Create new class to hold dimensions of a box
-    class box
+    class Box
     {
         //Created 3 properties for the class
         private int width;
@@ -38,17 +39,19 @@ namespace Encapsulation_Exercises___Part_2
         public int Height { private get { return height; } set { value = height; } }
         public int Length { private get { return length; } set { value = height; } }
 
-        public box()
-        {
 
-        }
-
-        public int surfaceArea(int _width, int _height, int _length)
+        //Constructor
+        public Box(int _width, int _height, int _length)
         {
             Width = _width;
             Height = _height;
             Length = _length;
-            return 2*(Height * Width) + 2*(Height * Length) + 2*(Width *Length);
+            Console.WriteLine("Box object created");
+        }
+
+        public string SurfaceArea()
+        {
+            return $"The surface area is: {2*(Height * Width) + 2*(Height * Length) + 2*(Width *Length)}";
         }
 
         public int volume(int _width, int _height, int _length)
