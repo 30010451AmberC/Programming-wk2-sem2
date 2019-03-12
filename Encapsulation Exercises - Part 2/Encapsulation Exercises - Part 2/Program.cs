@@ -16,7 +16,7 @@ namespace Encapsulation_Exercises___Part_2
             int height = 0;
             int length = 0;
 
-            //Collect user data
+            //Collect user data in a loop. If input is invalid, user will be asked for data again until valid input is entered.
             do
             {
                 Console.WriteLine("Enter width: ");
@@ -43,7 +43,7 @@ namespace Encapsulation_Exercises___Part_2
                     
             } while (confirm == false);
 
-
+            //Created new Box object called b1 and instantiated it with user input
             Box b1 = new Box(width, height, length);
 
             //Display surface area and volume back to user
@@ -52,7 +52,7 @@ namespace Encapsulation_Exercises___Part_2
             Console.ReadLine();
         }
         //Created method for checking input is not 0 or a negative number
-        public bool CheckInput(int width, int height, int length)
+        public static bool CheckInput(int width, int height, int length)//*NB: I made this method static but no idea if i should or why?
         {
 
                 if (width != 0)
@@ -103,11 +103,11 @@ namespace Encapsulation_Exercises___Part_2
 
     }
 
-    //Create new class to hold dimensions of a box
+    //Create new class called Box to hold dimensions of a box
     class Box
     {
         //Created 3 properties for the class
-        private int width;
+        private int width; 
         private int height;
         private int length;
 
