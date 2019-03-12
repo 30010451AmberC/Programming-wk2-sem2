@@ -11,17 +11,94 @@ namespace Encapsulation_Exercises___Part_2
         static void Main(string[] args)
         { //07/03/19
             //Task 1
+            bool confirm = false;
+            int width = 0;
+            int height = 0;
+            int length = 0;
 
             //Collect user data
-            Console.WriteLine("Enter width: ");
-            int width = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter height: ");
-            int height = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter length: ");
-            int length = int.Parse(Console.ReadLine());
+            do
+            {
+                Console.WriteLine("Enter width: ");
+                width = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter height: ");
+                height = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter length: ");
+                length = int.Parse(Console.ReadLine());
+
+                //Check if input is valid (not 0 or less than 0)
+                bool poo = CheckInput(width, height, length);
+
+                if (poo == false)
+                {
+                    //Error msg
+                    Console.WriteLine("Your input was invalid, please try again.");
+                }
+                else
+                {
+                    confirm = true;
+                }
+
+                
+                    
+            } while (confirm == false);
+
 
             Box b1 = new Box(width, height, length);
+
+            //Display surface area and volume back to user
             Console.WriteLine(b1.SurfaceArea());
+            Console.WriteLine(b1.Volume());
+            Console.ReadLine();
+        }
+        //Created method for checking input is not 0 or a negative number
+        public bool CheckInput(int width, int height, int length)
+        {
+
+                if (width != 0)
+                {
+
+                    if (width > 0)
+                    {
+                        if (length != 0)
+                        {
+                            if (length > 0)
+                            {
+                                if(height != 0)
+                                {
+                                if (height > 0)
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    return false;
+                                }
+                                }
+                                else
+                                {
+                                return false;
+                                }
+                            }
+                            else
+                            {
+                            return false;
+                            }
+                        }
+                        else
+                        {
+                            return false;
+                        }   
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
         }
 
     }
@@ -37,7 +114,7 @@ namespace Encapsulation_Exercises___Part_2
         //Created getters & setters for the properties
         public int Width { private get {  return width; } set { value = width; } }
         public int Height { private get { return height; } set { value = height; } }
-        public int Length { private get { return length; } set { value = height; } }
+        public int Length { private get { return length; } set { value = length; } }
 
 
         //Constructor
@@ -51,15 +128,12 @@ namespace Encapsulation_Exercises___Part_2
 
         public string SurfaceArea()
         {
-            return $"The surface area is: {2*(Height * Width) + 2*(Height * Length) + 2*(Width *Length)}";
+            return $"Surface Area: {2*(Height * Width) + 2*(Height * Length) + 2*(Width *Length)}";
         }
 
-        public int volume(int _width, int _height, int _length)
+        public string Volume()
         {
-            Width = _width;
-            Height = _height;
-            Length = _length;
-            return Length * Width * Height;
+            return $"Volume: {Length * Width * Height}";
         }
     }
 }
