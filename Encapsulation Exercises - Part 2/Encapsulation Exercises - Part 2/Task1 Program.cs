@@ -51,8 +51,8 @@ namespace Encapsulation_Exercises___Part_2
             Console.WriteLine(b1.Volume());
             Console.ReadLine();
         }
-        //Created method for checking input is not 0 or a negative number
-        public static bool CheckInput(int width, int height, int length)//*NB: I made this method static but no idea if i should or why?
+        //Created static method for checking input is valid. (Not 0 or a negative number)
+        public static bool CheckInput(int width, int height, int length)
         {
 
                 if (width != 0)
@@ -112,9 +112,9 @@ namespace Encapsulation_Exercises___Part_2
         private int length;
 
         //Created getters & setters for the properties
-        public int Width { private get {  return width; } set { value = width; } }
-        public int Height { private get { return height; } set { value = height; } }
-        public int Length { private get { return length; } set { value = length; } }
+        public int Width { private get {  return width; } set { width = value; } }
+        public int Height { private get { return height; } set {height = value; } }
+        public int Length { private get { return length; } set { length = value; } }
 
 
         //Constructor
@@ -137,3 +137,139 @@ namespace Encapsulation_Exercises___Part_2
         }
     }
 }
+
+//Teachers answer (not complete but you get the idea of the loops and how to make it more simple)
+/*class Program
+
+    {
+
+        static void Main(string[] args)
+
+{
+
+    int h = 0;
+
+    int w = 0;
+
+    int l = 0;
+
+
+
+    h = GetData(h, "Height"); //Telling GetData() Method what is being passed. Variable h, and a string.
+
+    w = GetData(w, "Width");
+
+    l = GetData(l, "Length");
+
+
+
+    Box b1 = new Box(h, w, l);
+
+
+
+    Console.WriteLine(b1.GetSurfaceArea());
+
+
+
+
+
+    Console.ReadLine();
+
+}
+
+
+
+static int GetData(int number, string info) //Passing the method the variables (ints) and the string.
+
+{
+
+    bool check = true;
+
+    bool confirm = false;
+
+
+
+    do
+
+    {
+
+
+
+        Console.Write($"Please enter the {info} of the box: ");
+
+        confirm = int.TryParse(Console.ReadLine(), out number); //puts number in the out variable??? Kinda still don't understand out.
+
+        do
+
+        {
+
+            if (!confirm)
+
+            {
+
+                Console.Clear();
+
+                Console.Write($"Error, that was not a valid number please try again\nPlease enter the {info} of the box: ");
+
+                confirm = int.TryParse(Console.ReadLine(), out number);
+
+            }
+
+        } while (!confirm);
+
+
+
+        Console.WriteLine($"{info} Set\n\n");
+
+        break;
+
+
+
+    } while (check);
+
+    return number;
+
+}
+
+    }
+
+
+
+    class Box
+
+{
+
+    private int Height { get; set; }
+
+    private int Width { get; set; }
+
+    private int Length { get; set; }
+
+
+
+    public Box(int _height, int _width, int _length)
+
+    {
+
+        Height = _height;
+
+        Width = _width;
+
+        Length = _length;
+
+        Console.WriteLine("Box object created...");
+
+    }
+
+
+
+    public string GetSurfaceArea()
+
+    {
+
+        return $"The surface area of the box is: {2 * (Height * Width) + 2 * (Height * Length) + 2 * (Length * Width)}";
+
+    }
+
+} */
+
