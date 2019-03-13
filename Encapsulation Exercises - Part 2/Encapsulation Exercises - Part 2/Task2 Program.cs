@@ -6,54 +6,66 @@ using System.Threading.Tasks;
 
 namespace Encapsulation_Exercises___Part_2
 {
-    class Class1
+    class Task2
     {
         static void Main(string[] args)
         {
+            //Task 2
             //Create student object and prompting user for input whilst checking if input is valid before moving onto next
             Students s1 = new Students();
             Console.WriteLine("Please enter student name: ");
             string name = Console.ReadLine();
             CheckString(name);
+            s1.Name = name;
             Console.WriteLine("Complete");
             Console.WriteLine("Please enter student email: ");
             string email = Console.ReadLine();
             CheckString(email);
+            s1.Email = email;
             Console.WriteLine("Complete");
             Console.WriteLine("Please enter student address: ");
             string address = Console.ReadLine();
             CheckString(address);
+            s1.Address = address;
             Console.WriteLine("Complete");
             Console.WriteLine("Please enter student username: ");
             string username = Console.ReadLine();
             CheckString(username);
+            s1.Username = username;
             Console.WriteLine("Complete");
             Console.WriteLine("Please enter student password: ");
             string pswd = Console.ReadLine();
             CheckString(pswd);
+            s1.Pswd = pswd;
             Console.WriteLine("Complete");
             Console.WriteLine("Please enter student Emergency Contact: ");
             string emergencyContact = Console.ReadLine();
             CheckString(emergencyContact);
+            s1.EmergencyContact = emergencyContact;
             Console.WriteLine("Complete");
             //Prompting user for the 4 grades and checking if the input is valid before moving on
             Console.WriteLine("Please enter students grade for Topic 1: ");
             int grade1 = int.Parse(Console.ReadLine());
             CheckNum(grade1, "Topic 1");
+            s1.Grade[0] = grade1;
             Console.WriteLine("Complete");
             Console.WriteLine("Please enter students grade for Topic 2: ");
             int grade2 = int.Parse(Console.ReadLine());
             CheckNum(grade2, "Topic 2");
+            s1.Grade[1] = grade2;
             Console.WriteLine("Complete");
             Console.WriteLine("Please enter students grade for Topic 3: ");
             int grade3 = int.Parse(Console.ReadLine());
             CheckNum(grade3, "Topic 3");
+            s1.Grade[2] = grade3;
             Console.WriteLine("Complete");
             Console.WriteLine("Please enter students grade for Topic 4: ");
             int grade4 = int.Parse(Console.ReadLine());
             CheckNum(grade4, "Topic 4");
+            s1.Grade[3] = grade4;
             Console.WriteLine("Complete");
 
+            Console.ReadLine();
         }
 
         //Method to check if user input is valid. Loop until valid input is entered
@@ -123,10 +135,14 @@ namespace Encapsulation_Exercises___Part_2
             Console.WriteLine("Student record has been created");
         }
 
-        public void StudentRecord()
+        //Method calculates the average of all 4 topic grades and displays it to the screen after displaying all the student record that is public
+        public string StudentRecord()
         {
-
-            Console.WriteLine($"Student Name: {Name} \nStudent Username/ID: {Username} \nGrade1: {Grade[0]} \nGrade2: {Grade[1]} \nGrade3: {Grade[2]} \nGrade4: {Grade[3]}");
+            double average = 0;
+            foreach (int x in grade)
+                average += x;
+            average = average / grade.Length;
+            return $"Student Name: {Name} \nStudent Username/ID: {Username} \nGrade1: {grade[0]} \nGrade2: {grade[1]} \nGrade3: {grade[2]} \nGrade4: {grade[3]}\nAverage: {average}";
         }
 
     }
